@@ -11,6 +11,8 @@ clean  :; forge clean
 remove :; rm -rf .gitmodules && rm -rf .git/modules/* && rm -rf lib && touch .gitmodules && forge install foundry-rs/forge-std
 #&& git add . && git commit -m "modules"
 
+nargo1 :; nargo test --program-dir ./circuits/hash_preimage --package hash_preimage --exact test_main
+
 install :;
 	forge install OpenZeppelin/openzeppelin-contracts
 

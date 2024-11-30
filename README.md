@@ -1,16 +1,24 @@
 # zero-knowledge
 
 ## Installation / Setup
-Install Noir: https://noir-lang.org/docs
-Or update Noir: noirup
-
 Install Foundry: https://book.getfoundry.sh/getting-started/installation
 Or update Foundry: `foundryup`
 Setup a Foundry project: `forge init --no-git`
 
-https://book.getfoundry.sh/getting-started/installation
+Install Noir: https://noir-lang.org/docs
+Or update Noir: noirup
+
+Make `circuits` folder, and two folders under that: `hash_preimage`, `imt`
+```
+cd circuits/hash_preimage 
+nargo init
+```
+
 
 ## Zero Knowledge Intermediat Merkle Tree
+ZK Basics: to prove input existing without revealing the input itself
+
+Input text -> cryptographic hash function -> digest(aka hash)
 
 
 ## Foundry Documentation
