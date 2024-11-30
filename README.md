@@ -26,12 +26,26 @@ Add a Nargo Prover.toml file
 cd circuits/hash_preimage
 nargo check
 ```
+In circuits/hash_preimage/src/main.rs,
+we keep secret of the hash_preimage
 
 Copy PoseidonT2.sol and PoseidonT3.sol
 from https://github.com/chancehudson/poseidon-solidity/blob/main/contracts/ to src/libraries/
 
-See the instructions in test/IMT.sol
+Run `make test` to run test/IMT.sol and get the hex value, nullifierHash. Convert nullifierHash in uint256 to hex via https://www.rapidtables.com/convert/number/decimal-to-hex.html
 
+inside hash_preimage/Prover.toml, prefix "0x" to the nullifierHash hex value, and save it into the "hash" value, and save "0" to the hash_preimage value
+
+to make hash_preimage/target/witness.gz: run `nargo execute witness`
+
+to generate proof: run `bb prove -b ./target/hash_preimage.json -w ./target/witness.gz -o ./target/proof`
+
+Go to the project root, then run `mkdir proof_convert`, cd into it and `cargo init`, add src/main.rs; Fix proof location; Run `cargo run` to get hex version of the proof and an input hash.
+
+Go to project root/circuits/hash_preimage/, then run `nargo compile`
+
+Run `bb write_vk -b ./target/hash_preimage.json` then `bb contract`, and confirm targe/contract.sol has been generated; Then deploy the UltraVarifier contract in Remix.ethereum.org @17:00; 
+At the verify function: Copy the proof from above `cargo run` and enter it as 1st argument; 2nd argument is the `["YOUR_INPUT_HASH"]`
 
 
 ## Zero Knowledge Intermediat Merkle Tree

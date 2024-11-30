@@ -11,6 +11,8 @@ flat*.sol
 abi
 keystore
 src/Counter.sol
+data
+proof_convert/proof
 
 # Compiler files
 cache/
