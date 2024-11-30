@@ -8,11 +8,30 @@ Setup a Foundry project: `forge init --no-git`
 Install Noir: https://noir-lang.org/docs
 Or update Noir: noirup
 
-Make `circuits` folder, and two folders under that: `hash_preimage`, `imt`
+Install bbup:
+```
+curl -L bbup.dev | bash
+pnpm install -g bbup
+bbup
+```
+
+Make `circuits` folder, and two folders under that: `hash_preimage`, `imt`, then initialize a Nargo hash function with its test:
 ```
 cd circuits/hash_preimage 
 nargo init
+make nargo1
 ```
+Add a Nargo Prover.toml file
+```
+cd circuits/hash_preimage
+nargo check
+```
+
+Copy PoseidonT2.sol and PoseidonT3.sol
+from https://github.com/chancehudson/poseidon-solidity/blob/main/contracts/ to src/libraries/
+
+See the instructions in test/IMT.sol
+
 
 
 ## Zero Knowledge Intermediat Merkle Tree

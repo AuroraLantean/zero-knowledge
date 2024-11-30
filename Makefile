@@ -19,11 +19,11 @@ install :;
 # Update Dependencies, DO NOT USE as this will use Openzeppelin's master branch, which is for development!!!
 #update:; forge update
 
-format :; forge fmt
+fmt :; forge fmt
 build:; forge build
 
 #test :; forge test -vvv --gas-report
-test :; forge test -vvv --match-path test/Payment.t.sol --gas-report
+test :; forge test -vvv --match-path test/IMT.t.sol
 
 env :; source .env
 show_vault :; echo $VAULT
